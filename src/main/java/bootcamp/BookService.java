@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +25,14 @@ public class BookService {
     }
 
     public BookResponse addBook(Book book) {
+        String uuid = UUID.randomUUID().toString();
+        BookEntity bookEntity = new BookEntity(book.name(), book.author(), uuid);
+        BookEntity bookEntityFromDB = bookRepository.save(bookEntity);
+        BookResponse bookResponse;
+        if(bookEntityFromDB != null) {
+            bookResponse = new BookResponse(bookEntityFromDB.uuid, bookEntityFromDB.name, bookEntityFromDB.author);
+            return bookResponse;
+        }
         return null;
     }
 }

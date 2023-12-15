@@ -31,13 +31,13 @@ public class BooksController {
         return ResponseEntity.ok(new Books(bookService.allBooks()));
     }
 
-    @PostMapping("/addBook")
+    @PostMapping("/add-book")
     public ResponseEntity<Books> books(@RequestBody Book book) throws URISyntaxException {
 
         System.out.println("book "+book);
         BookResponse bookResponse = bookService.addBook(book);
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(HttpHeaders.LOCATION, bookResponse.uuid());
+        httpHeaders.add(HttpHeaders.LOCATION, bookResponse.uuid().toString());
 
         return new ResponseEntity(
                 bookResponse,
