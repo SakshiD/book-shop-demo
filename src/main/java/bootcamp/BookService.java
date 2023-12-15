@@ -19,8 +19,11 @@ public class BookService {
         return bookRepository.findAll().stream().map(b -> toBook(b)).collect(Collectors.toList());
     }
 
-    private static Book toBook(BookEntity bookEntity){
-        return new Book(bookEntity.name,bookEntity.author);
+    private static Book toBook(BookEntity bookEntity) {
+        return new Book(bookEntity.name, bookEntity.author);
     }
 
+    public BookResponse addBook(Book book) {
+        return null;
+    }
 }
