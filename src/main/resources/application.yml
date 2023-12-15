@@ -1,0 +1,11 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/bookdb
+    username: bookuser
+    password: fizzingwhizbee
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
